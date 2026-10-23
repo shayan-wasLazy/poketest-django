@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.http import require_POST
 
@@ -9,6 +10,11 @@ from .services import (
     fetch_pokemon,
     fetch_pokemon_collection,
 )
+
+
+def health_check(request):
+    """Lightweight endpoint for Render's service health check."""
+    return HttpResponse("ok", content_type="text/plain")
 
 
 def home(request):
