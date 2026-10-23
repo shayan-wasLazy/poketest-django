@@ -95,3 +95,13 @@ def test_collection_builds_sprite_urls(mock_get):
     assert [item["id"] for item in result] == [1, 2]
     assert result[0]["name"] == "Bulbasaur"
     assert result[1]["image"].endswith("/2.png")
+
+
+@patch("pokedex.services.requests.get")
+def test_fetch_pokemon_handles_malformed_json(mock_get):
+    response = Mock(status_code=200)
+    response.raise_for_status.return_value = None
+    response.json.side_effect = ValueError("not valid JSON")
+    mock_get.return_value = response
+    with pytest.raises(PokemonServiceUnavailable, match="couldn't read"):
+        fetch_pokemon("pikachu")
