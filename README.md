@@ -3,7 +3,7 @@
 A responsive Pokémon explorer built to demonstrate automated testing for Django applications. The app uses PokéAPI for live data, stores favorites locally, and tests external HTTP calls with mocks so the test suite does not depend on the live service.
 
 ## Features
-- Responsive Pokédex UI with search, type filters, Pokémon cards and detail pages.
+- Responsive Pokédex UI with search, Pokémon cards and detail pages.
 - Detail view with types, abilities, base stats and artwork.
 - Favorites stored in Django's database.
 - Graceful handling of missing Pokémon, timeouts and upstream API failures.
