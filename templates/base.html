@@ -1,0 +1,17 @@
+{% load static %}
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#101014">
+<meta name="description" content="PokéTest — a Pokédex built to demonstrate reliable Django API testing.">
+<title>{% block title %}PokéTest — Catch. Test. Repeat.{% endblock %}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/styles.css' %}"></head>
+<body><div class="site-noise" aria-hidden="true"></div>
+<header class="topbar"><a class="brand" href="{% url 'home' %}" aria-label="PokéTest home"><span class="brand-ball"><span></span></span><span>poké<span class="brand-accent">test</span><small>QUALITY ASSURANCE LAB</small></span></a>
+<nav class="nav-links" aria-label="Main navigation"><a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">Pokédex <span>01</span></a><a href="{% url 'favorites' %}" class="{% if request.resolver_match.url_name == 'favorites' %}active{% endif %}">My collection <span>02</span></a></nav>
+<div class="status-pill"><span class="status-dot"></span> TEST ENVIRONMENT</div></header>
+{% if messages %}<div class="messages">{% for message in messages %}<div class="message {{ message.tags }}">{{ message }}</div>{% endfor %}</div>{% endif %}
+<main>{% block content %}{% endblock %}</main>
+<footer class="footer"><a class="footer-brand" href="{% url 'home' %}">POKÉTEST <span>×</span> PYTEST</a><p>Built for better tests, not just bigger coverage.</p><span class="footer-code">BUILD 001 · DJANGO QA</span></footer>
+</body></html>
