@@ -1,0 +1,3 @@
+{% extends "base.html" %}
+{% block title %}API unavailable — PokéTest{% endblock %}
+{% block content %}<section class="error-page"><span class="error-code">503</span><div class="eyebrow"><span class="eyebrow-line"></span> UPSTREAM UNAVAILABLE</div><h1>Even APIs<br><span class="title-red">need a break.</span></h1><p>{{ error }}</p><p>Our tests mock the API boundary, so the suite remains deterministic when the service is down.</p><a class="button button-primary" href="{% url 'home' %}">Try again ↻</a></section>{% endblock %}
