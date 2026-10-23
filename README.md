@@ -50,6 +50,21 @@ static/css/styles.css   UI styling
 pytest.ini              pytest and coverage configuration
 ```
 
+## Deploy to Render
+
+This repository includes a Render Blueprint (`render.yaml`) that defines the Django web service and its PostgreSQL database.
+
+1. Sign in to [Render](https://dashboard.render.com/).
+2. Choose **New → Blueprint** (or **New + → Blueprint**, depending on the dashboard UI).
+3. Connect the GitHub repository `shayan-wasLazy/poketest-django` and select the `main` branch.
+4. Review the proposed resources from `render.yaml` and apply the Blueprint. Render will create the web service and database and generate the `SECRET_KEY`.
+5. Wait for the first deployment to finish, then open the service's `.onrender.com` URL.
+6. Check `/health/` for the lightweight health endpoint and `/admin/` for Django admin.
+
+The Blueprint configures `DEBUG=false`, PostgreSQL via `DATABASE_URL`, WhiteNoise static-file serving, and a build script that installs dependencies, collects static assets, and applies migrations. Keep production secrets in Render environment variables; do not commit real credentials.
+
+**Free-tier note:** Render's free web services can spin down when idle, and free database availability/retention can change. Check the plan and data-retention terms shown in your Render dashboard before using it for anything important. A persistent paid database is preferable if you need long-term favorites data.
+
 ## API
 Uses the public [PokéAPI](https://pokeapi.co/docs/v2) endpoint `https://pokeapi.co/api/v2/pokemon/{name-or-id}/`. No API key is required.
 
