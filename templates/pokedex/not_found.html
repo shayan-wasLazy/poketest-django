@@ -1,0 +1,3 @@
+{% extends "base.html" %}
+{% block title %}Not found — PokéTest{% endblock %}
+{% block content %}<section class="error-page"><span class="error-code">404</span><div class="eyebrow"><span class="eyebrow-line"></span> SPECIMEN NOT FOUND</div><h1>Well, that's<br><span class="title-red">unexpected.</span></h1><p>No Pokémon matched that identifier. A good test suite should expect this.</p><a class="button button-primary" href="{% url 'home' %}">Back to Pokédex ↗</a></section>{% endblock %}
